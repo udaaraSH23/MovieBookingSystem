@@ -79,8 +79,7 @@ public class UserGUI {
         pNowSw = new JPanel(null);
         pNowSw.setBackground(new Color(0x385095D2, true));
         pNowSw.setBorder(bdrUsr);
-
-        lMv1 = new JLabel("Movie 1"+Movies.class.toString());
+        lMv1 = new JLabel("Main.no");
         lMv1.setBounds(100,100,400,100);
         lMv1.setForeground(Color.WHITE);
         pNowSw.add(lMv1);
@@ -363,7 +362,7 @@ public class UserGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 fUsr.setVisible(false);
-                new Window();
+                Main.mainW.fMnWnd.setVisible(true);
             }
         });
 
@@ -387,7 +386,5 @@ public class UserGUI {
         });
     }
 
-    public static void edit(String u){
-        lMv1.setText(u);
-    }
+
 }

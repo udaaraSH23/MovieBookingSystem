@@ -11,7 +11,7 @@ public class AdminGUI {
     JTextField  tfmovie_id,tfmvNme,tfmvLang,tfmvtpe,tfmvDrtn,tfmvDscp;
     CardLayout cd1;
     JLabel jEmvID,jEmvNme,jEmvLang,jEmType,jEmvdrn,jEmvdsc;
-     static Movies mv;
+
 
 
     AdminGUI(){
@@ -52,8 +52,8 @@ public class AdminGUI {
         bBackMn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                fAdmn.dispose();
-                new Window();
+                Main.admin.fAdmn.setVisible(false);
+                Main.mainW.fMnWnd.setVisible(true);
             }
         });
         pAdmnGui.add(bBackMn);
@@ -133,12 +133,20 @@ public class AdminGUI {
         tfmvDscp.setBounds(100,350,100,30);
         pEdit.add(tfmvDscp);
 
+
 //Button func PEDIT----------------------------------------------------------------
         beditMv.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            Movies mv =new Movies(Integer.parseInt(tfmovie_id.getText()),tfmvNme.getText(),tfmvLang.getText(),tfmvtpe.getText(),Float.parseFloat(tfmvDrtn.getText()),tfmvDrtn.getText());
-
+//            Main.mv.movie_id = Integer.parseInt(tfmovie_id.getText());
+//            Main.mv.mvNme = "tfmvNme.getText()";
+//            Main.mv.mvLang = tfmvLang.getText();
+//            Main.mv.mvtpe = tfmvtpe.getText();
+//            Main.mv.mvDrtn = Float.parseFloat(tfmvDrtn.getText());
+//            Main.mv.mvDscp=tfmvDscp.getText();
+                System.out.println(Main.no);
+                Main.no = 45;
+                System.out.println(Main.no);
             }
         });
 
@@ -174,7 +182,7 @@ public class AdminGUI {
         backgPanel.add(cardAdmn,BorderLayout.CENTER);
 
         fAdmn.add(backgPanel);
-        fAdmn.setVisible(true);
+
 
         bEdit.addActionListener(new ActionListener() {
             @Override
