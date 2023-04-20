@@ -8,13 +8,13 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class UserGUI {
     static JFrame fUsr;
-    static JPanel pUsr,pNowSw,cntnr,pMnSpMv,pUpMv,pBckGusr,pBkMv,pSgnin,pCrteAccnt,pBookings;
+    static JPanel pUsr,pNowSw,cntnr,pMnSpMv,pUpMv,pBckGusr,pBkMv,pSgnin,pCrteAccnt,pBookings,pCardPay,pSumma;
     static JLabel lMv1,lMv2,lMv3, lupMv1, lupMv2,lMnsp,lSignin,lUsrSign,lPassSign,lCrteAccq;
     static JLabel lBook;
     static JButton bnowSw, bupMv, bmnSpMv,bBack1,bBack2,bBack3,bBackMn,bSignIn,bBackSign,bCrteAcc, bBookMv1,bBookMv2,bBookMv3;
     static JButton bBookS,bBookBck;
-    static  JButton bCreate,bCrtBck;
-    static  JLabel lCrtAcc,lFname,lLname,lAge,lEmail,lAddress;
+    static  JButton bCreate,bCrtBck,bCrdbk,bCrdPay,bsumOk;
+    static  JLabel lCrtAcc,lFname,lLname,lAge,lEmail,lAddress,lCrdTit,lCrdcrd,lCrdcvc,lCrddte,lcrdNme,lSummary,lSummThnx;
     static JTextField tfUsrnm, tfPass,tfFname,tfLname,tfAge,tfEmail,tfAddress;
 
     static  JRadioButton jrBcMv1,jrBcMv2,jrBcMv3,jrBcUp1,jrBcUp2;
@@ -340,6 +340,71 @@ public class UserGUI {
             }
         });
 
+//Card CardPay
+        pCardPay = new JPanel(null);
+        pCardPay.setBackground(new Color(0x385095D2, true));
+        pCardPay.setBorder(bdrUsr);
+
+        lCrdTit = new JLabel("Paymnt");
+        lCrdTit.setBounds(150,30,200,50);
+        lCrdTit.setForeground(Color.WHITE);
+        lCrdTit.setFont(new Font("Cambria",Font.BOLD,18));
+        pCardPay.add(lCrdTit);
+
+        lcrdNme = new JLabel("Name on the card");
+        lcrdNme.setBounds(150,100,200,50);
+        lcrdNme.setForeground(Color.WHITE);
+        lcrdNme.setFont(new Font("Cambria",Font.BOLD,18));
+        pCardPay.add(lcrdNme);
+
+        lCrdcrd = new JLabel("Enter Card Number");
+        lCrdcrd.setBounds(150,150,200,50);
+        lCrdcrd.setForeground(Color.WHITE);
+        lCrdcrd.setFont(new Font("Cambria",Font.BOLD,18));
+        pCardPay.add(lCrdcrd);
+
+        lCrdcvc = new JLabel("CVC");
+        lCrdcvc.setBounds(150,230,200,50);
+        lCrdcvc.setForeground(Color.WHITE);
+        lCrdcvc.setFont(new Font("Cambria",Font.BOLD,18));
+        pCardPay.add(lCrdcvc);
+
+        lCrddte = new JLabel("Date Of Expiry");
+        lCrddte.setBounds(150,330,200,50);
+        lCrddte.setForeground(Color.WHITE);
+        lCrddte.setFont(new Font("Cambria",Font.BOLD,18));
+        pCardPay.add(lCrddte);
+
+        bCrdbk = new JButton("Back");
+        bCrdbk.setFocusable(false);
+        bCrdbk.setBounds(50,450,100,50);
+        bCrdbk.setBackground(Color.BLACK);
+        bCrdbk.setForeground(Color.WHITE);
+        pCardPay.add(bCrdbk);
+
+        bCrdPay = new JButton("Back");
+        bCrdPay.setFocusable(false);
+        bCrdPay.setBounds(450,450,100,50);
+        bCrdPay.setBackground(Color.BLACK);
+        bCrdPay.setForeground(Color.WHITE);
+        pCardPay.add(bCrdPay);
+//Card Summary============================================================================================
+        pSumma = new JPanel(null);
+        pSumma.setBackground(new Color(0x385095D2, true));
+        pSumma.setBorder(bdrUsr);
+
+        lSummary = new JLabel("Date Of Expiry");
+        lSummary.setBounds(150,330,200,50);
+        lSummary.setForeground(Color.WHITE);
+        lSummary.setFont(new Font("Cambria",Font.BOLD,18));
+        pSumma.add(lSummary);
+
+        bsumOk = new JButton("OK");
+        bsumOk.setFocusable(false);
+        bsumOk.setBounds(450,450,100,50);
+        bsumOk.setBackground(Color.BLACK);
+        bsumOk.setForeground(Color.WHITE);
+        pSumma.add(bsumOk);
 
 //Container==================================================================================
         crd = new CardLayout(100,100);
@@ -350,7 +415,9 @@ public class UserGUI {
         cntnr.add(pMnSpMv,"Monthly");
         cntnr.add(pSgnin, "signin");
         cntnr.add(pCrteAccnt,"crtAcc");
-        cntnr.add((pBookings),"Bookings");
+        cntnr.add(pBookings,"Bookings");
+        cntnr.add(pCardPay,"Payments");
+        cntnr.add(pSumma,"Summary");
         cntnr.setOpaque(false);
         pBckGusr.add(cntnr,BorderLayout.CENTER);
         fUsr.add(pBckGusr);
@@ -445,6 +512,44 @@ public class UserGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 crd.previous(cntnr);
+            }
+        });
+
+        bCrdbk.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                crd.previous(cntnr);
+            }
+        });
+        bsumOk.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                crd.show(cntnr,"Bookings");
+            }
+        });
+        bBookBck.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                crd.previous(cntnr);
+            }
+        });
+        bBookS.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                crd.show(cntnr,"Payments");
+            }
+        });
+        bCrdPay.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                crd.show(cntnr,"Summary");
+            }
+        });
+
+        bsumOk.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                crd.show(cntnr,"Bookings");
             }
         });
     }
