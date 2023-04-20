@@ -152,6 +152,8 @@ public class Window{
             public void actionPerformed(ActionEvent e) {
 
                 if(tfNme.getText().equals("Udara")&&tfPsw.getText().equals("12345")) {
+                    tfNme.setText("");
+                    tfPsw.setText("");
                     fAdmnLog.dispose();
                     Main.admin.fAdmn.setVisible(true);
                 }

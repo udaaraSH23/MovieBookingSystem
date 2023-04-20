@@ -8,13 +8,16 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class UserGUI {
     static JFrame fUsr;
-    static JPanel pUsr,pNowSw,cntnr,pMnSpMv,pUpMv,pBckGusr,pBkMv,pSgnin,pCrteAccnt;
+    static JPanel pUsr,pNowSw,cntnr,pMnSpMv,pUpMv,pBckGusr,pBkMv,pSgnin,pCrteAccnt,pBookings;
     static JLabel lMv1,lMv2,lMv3, lupMv1, lupMv2,lMnsp,lSignin,lUsrSign,lPassSign,lCrteAccq;
+    static JLabel lBook;
     static JButton bnowSw, bupMv, bmnSpMv,bBack1,bBack2,bBack3,bBackMn,bSignIn,bBackSign,bCrteAcc, bBookMv1,bBookMv2,bBookMv3;
+    static JButton bBookS,bBookBck;
     static  JButton bCreate,bCrtBck;
     static  JLabel lCrtAcc,lFname,lLname,lAge,lEmail,lAddress;
     static JTextField tfUsrnm, tfPass,tfFname,tfLname,tfAge,tfEmail,tfAddress;
 
+    static  JRadioButton jrBcMv1,jrBcMv2,jrBcMv3,jrBcUp1,jrBcUp2;
     CardLayout crd;
 
     UserGUI() {
@@ -79,7 +82,7 @@ public class UserGUI {
         pNowSw = new JPanel(null);
         pNowSw.setBackground(new Color(0x385095D2, true));
         pNowSw.setBorder(bdrUsr);
-        lMv1 = new JLabel("Main.no");
+        lMv1 = new JLabel("Main.nb");
         lMv1.setBounds(100,100,400,100);
         lMv1.setForeground(Color.WHITE);
         pNowSw.add(lMv1);
@@ -252,6 +255,13 @@ public class UserGUI {
         bSignIn.setForeground(Color.WHITE);
         pSgnin.add(bSignIn);
 
+        bSignIn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                crd.show(cntnr,"Bookings");
+            }
+        });
+
         bCrteAcc = new JButton("Create Account");
         bCrteAcc.setFocusable(false);
         bCrteAcc.setBounds(150,350,150,30);
@@ -279,6 +289,58 @@ public class UserGUI {
         tfPass = new JPasswordField(15);
         tfPass.setBounds(150,280,250,30);
         pSgnin.add(tfPass);
+
+//Booking Window============================================================================
+        pBookings = new JPanel(null);
+        pBookings.setBackground(new Color(0x385095D2, true));
+        pBookings.setBorder(bdrUsr);
+
+        lBook = new JLabel("Book");
+        lBook.setBounds(10,230,200,50);
+        lBook.setForeground(Color.WHITE);
+        lBook.setFont(new Font("Cambria",Font.BOLD,18));
+        pBookings.add(lBook);
+
+        jrBcMv1 = new JRadioButton("Movie 1");
+        jrBcMv1.setBounds(20,20,50,50);
+        pBookings.add(jrBcMv1);
+
+        jrBcMv2 = new JRadioButton("Movie 2");
+        jrBcMv2.setBounds(70,20,50,50);
+        pBookings.add(jrBcMv2);
+
+        jrBcMv3 = new JRadioButton("Movie 3");
+        jrBcMv3.setBounds(150,20,50,50);
+        pBookings.add(jrBcMv3);
+
+        ButtonGroup mvBck = new ButtonGroup();
+        mvBck.add(jrBcMv1);
+        mvBck.add(jrBcMv2);
+        mvBck.add(jrBcMv3);
+
+
+        bBookS = new JButton("Book");
+        bBookS.setFocusable(false);
+        bBookS.setBounds(450,450,100,50);
+        bBookS.setForeground(Color.WHITE);
+        bBookS.setBackground(Color.BLACK);
+        pBookings.add(bBookS);
+
+        bBookBck = new JButton("Back");
+        bBookBck.setFocusable(false);
+        bBookBck.setBounds(50,450,100,50);
+        bBookBck.setBackground(Color.BLACK);
+        bBookBck.setForeground(Color.WHITE);
+        pBookings.add(bBookBck);
+
+        bBookBck.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                crd.previous(cntnr);
+            }
+        });
+
+
 //Container==================================================================================
         crd = new CardLayout(100,100);
         cntnr = new JPanel(crd);
@@ -286,8 +348,9 @@ public class UserGUI {
         cntnr.add(pNowSw,"NowSW");
         cntnr.add(pUpMv,"Upcome");
         cntnr.add(pMnSpMv,"Monthly");
-        cntnr.add(pSgnin,"signin");
+        cntnr.add(pSgnin, "signin");
         cntnr.add(pCrteAccnt,"crtAcc");
+        cntnr.add((pBookings),"Bookings");
         cntnr.setOpaque(false);
         pBckGusr.add(cntnr,BorderLayout.CENTER);
         fUsr.add(pBckGusr);

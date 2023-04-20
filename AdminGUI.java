@@ -6,11 +6,15 @@ import java.awt.event.ActionListener;
 
 public class AdminGUI {
     JFrame fAdmn;
-    JButton bEdit,bViwBkng, bBackMn,bBack1,bBack2,beditMv;
-    JPanel pEdit,pViwBkng,pAdmnGui,cardAdmn,backgPanel;
+    JButton bEdit,bViwBkng, bBackMn,bBack1,bBack2,beditMv,bHallChnge;
+    JPanel pEdit,pViwBkng,pAdmnGui,cardAdmn,backgPanel,pEditSlt,pHlchne;
     JTextField  tfmovie_id,tfmvNme,tfmvLang,tfmvtpe,tfmvDrtn,tfmvDscp;
     CardLayout cd1;
-    JLabel jEmvID,jEmvNme,jEmvLang,jEmType,jEmvdrn,jEmvdsc;
+    JLabel jEmvID,jEmvNme,jEmvLang,jEmType,jEmvdrn,jEmvdsc,jEditSltTi,jEditSlNS,jEditSlUp,jEditSlMs,jHlChgeTit,jHlChge1,jHlChge2,jBckTitle,jBckInfo;
+    JButton bEditSltb,bEditSltBck,bHllOk,bHllbck;
+    JRadioButton jrMv1,jrMv2,jrMv3,jrUp1,jrUp2,jrMs;
+
+    JComboBox jcMv,jcHll;
 
 
 
@@ -44,6 +48,13 @@ public class AdminGUI {
         bViwBkng.setForeground(Color.WHITE);
         pAdmnGui.add(bViwBkng);
 
+        bHallChnge = new JButton("Change Hall");
+        bHallChnge.setBounds(200,300,150,50);
+        bHallChnge.setBackground(Color.BLACK);
+        bHallChnge.setForeground(Color.WHITE);
+        bHallChnge.setFocusable(false);
+        pAdmnGui.add(bHallChnge);
+
         bBackMn = new JButton("Back");
         bBackMn.setFocusable(false);
         bBackMn.setBounds(50,450,100,50);
@@ -57,6 +68,128 @@ public class AdminGUI {
             }
         });
         pAdmnGui.add(bBackMn);
+
+//Card Hall change===============================================================================================
+        pHlchne = new JPanel(null);
+        pHlchne.setBackground(new Color(0x385095D2, true));
+        pHlchne.setBorder(bdrAdmn);
+
+        jHlChgeTit = new JLabel("Change Hall:");
+        jHlChgeTit.setBounds(10,100,50,20);
+        jHlChgeTit.setForeground(Color.WHITE);
+        pHlchne.add(jHlChgeTit);
+
+        jHlChge1 = new JLabel("Select Movie");
+        jHlChge1.setBounds(10,250,50,20);
+        jHlChge1.setForeground(Color.WHITE);
+        pHlchne.add(jHlChge1);
+
+        jHlChge2 = new JLabel("Edit Hall:");
+        jHlChge2.setBounds(10,300,50,20);
+        jHlChge2.setForeground(Color.WHITE);
+        pHlchne.add(jHlChge2);
+
+        String[] mvies = {"mv1","mv2","mv3"};
+        String[] halls = {"h1","h2","h3"};
+
+        jcMv = new JComboBox(mvies);
+        jcMv.setBounds(100,200,100,50);
+        pHlchne.add(jcMv);
+
+        jcHll = new JComboBox(halls);
+        jcHll.setBounds(300,200,100,50);
+        pHlchne.add(jcHll);
+
+
+        bHllbck = new JButton("BACK");
+        bHllbck.setBounds(100,400,100,50);
+        bHllbck.setBackground(Color.BLACK);
+        bHllbck.setForeground(Color.WHITE);
+        bHllbck.setFocusable(false);
+        pHlchne.add(bHllbck);
+
+        bHllOk = new JButton("BACK");
+        bHllOk.setBounds(400,400,100,50);
+        bHllOk.setBackground(Color.BLACK);
+        bHllOk.setForeground(Color.WHITE);
+        bHllOk.setFocusable(false);
+        pHlchne.add(bHllOk);
+
+//Card Edit-Select================================================================================================
+        pEditSlt = new JPanel(null);
+        pEditSlt.setBackground(new Color(0x385095D2, true));
+        pEditSlt.setBorder(bdrAdmn);
+
+        jEditSltTi = new JLabel("Edit Movies:");
+        jEditSltTi.setBounds(10,100,50,20);
+        jEditSltTi.setForeground(Color.WHITE);
+        pEditSlt.add(jEditSltTi);
+
+        jEditSlNS = new JLabel("Now Showing");
+        jEditSlNS.setBounds(10,200,50,20);
+        jEditSlNS.setForeground(Color.WHITE);
+        pEditSlt.add(jEditSlNS);
+
+        jEditSlUp = new JLabel("Upcoming");
+        jEditSlUp.setBounds(10,300,50,20);
+        jEditSlUp.setForeground(Color.WHITE);
+        pEditSlt.add(jEditSlUp);
+
+        jEditSlMs = new JLabel("Monthly Special");
+        jEditSlMs.setBounds(10,100,50,20);
+        jEditSlMs.setForeground(Color.WHITE);
+        pEditSlt.add(jEditSlMs);
+
+        bEditSltBck = new JButton("BACK");
+        bEditSltBck.setBounds(100,400,100,50);
+        bEditSltBck.setBackground(Color.BLACK);
+        bEditSltBck.setForeground(Color.WHITE);
+        bEditSltBck.setFocusable(false);
+        pEditSlt.add(bEditSltBck);
+
+        bEditSltb = new JButton("Edit");
+        bEditSltb.setBounds(400,400,100,50);
+        bEditSltb.setBackground(Color.BLACK);
+        bEditSltb.setForeground(Color.WHITE);
+        bEditSltb.setFocusable(false);
+        pEditSlt.add(bEditSltb);
+
+
+        jrMv1 =new JRadioButton("Movie 1");
+        jrMv1.setBounds(10,40,50,20);
+        pEditSlt.add(jrMv1);
+
+        jrMv2 =new JRadioButton("Movie 2");
+        jrMv2.setBounds(10,60,50,20);
+        pEditSlt.add(jrMv2);
+
+        jrMv3 =new JRadioButton("Movie 3");
+        jrMv3.setBounds(10,80,50,20);
+        pEditSlt.add(jrMv3);
+
+        jrUp1 =new JRadioButton("Upcoming 1");
+        jrUp1.setBounds(10,150,50,20);
+        pEditSlt.add(jrUp1);
+
+        jrUp2 =new JRadioButton("Upcomind 2");
+        jrUp2.setBounds(10,170,50,20);
+        pEditSlt.add(jrUp2);
+
+        jrMs =new JRadioButton("Monthly Special");
+        jrMs.setBounds(10,220,50,20);
+        pEditSlt.add(jrMs);
+
+        ButtonGroup grpEdit = new ButtonGroup();
+        grpEdit.add(jrMv1);
+        grpEdit.add(jrMv2);
+        grpEdit.add(jrMv3);
+        grpEdit.add(jrUp1);
+        grpEdit.add(jrUp2);
+        grpEdit.add(jrMs);
+
+
+
+
 
 //Card 2 -Edit panel===============================================================================================
         pEdit = new JPanel(null);
@@ -138,15 +271,15 @@ public class AdminGUI {
         beditMv.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//            Main.mv.movie_id = Integer.parseInt(tfmovie_id.getText());
-//            Main.mv.mvNme = "tfmvNme.getText()";
-//            Main.mv.mvLang = tfmvLang.getText();
-//            Main.mv.mvtpe = tfmvtpe.getText();
-//            Main.mv.mvDrtn = Float.parseFloat(tfmvDrtn.getText());
-//            Main.mv.mvDscp=tfmvDscp.getText();
-                System.out.println(Main.no);
-                Main.no = 45;
-                System.out.println(Main.no);
+            Main.mv.movie_id = Integer.parseInt(tfmovie_id.getText());
+            Main.mv.mvNme = tfmvNme.getText();
+            Main.mv.mvLang = tfmvLang.getText();
+            Main.mv.mvtpe = tfmvtpe.getText();
+            Main.mv.mvDrtn = Double.parseDouble(tfmvDrtn.getText());
+            Main.mv.mvDscp=tfmvDscp.getText();
+
+            Movies.editMovie();
+            JOptionPane.showMessageDialog(null,"Movie was Edited","Info",JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
@@ -161,6 +294,18 @@ public class AdminGUI {
         bBack2.setBackground(Color.BLACK);
         bBack2.setForeground(Color.WHITE);
         pViwBkng.add(bBack2);
+
+        jBckTitle = new JLabel("Booking Information");
+        jBckTitle.setBounds(10,300,50,20);
+        jBckTitle.setForeground(Color.WHITE);
+        pViwBkng.add(jBckTitle);
+
+        jBckInfo = new JLabel("Booking Information");
+        jBckInfo.setBounds(50,300,100,100);
+        jBckInfo.setForeground(Color.WHITE);
+        pViwBkng.add(jBckInfo);
+
+
 //Container============================================================================================
         cd1 = new CardLayout(100,100);
         cardAdmn = new JPanel(cd1);
@@ -168,6 +313,8 @@ public class AdminGUI {
         cardAdmn.add(pAdmnGui,"AdminPan");
         cardAdmn.add(pEdit,"Edit");
         cardAdmn.add(pViwBkng,"ViewBook");
+        cardAdmn.add(pEditSlt,"EditSelect");
+        cardAdmn.add(pHlchne,"HallChange");
         cardAdmn.setOpaque(false);
 //=================================================================================================
 
@@ -187,7 +334,7 @@ public class AdminGUI {
         bEdit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cd1.show(cardAdmn,"Edit");
+                cd1.show(cardAdmn,"EditSelect");
 
             }
         });
@@ -205,6 +352,34 @@ public class AdminGUI {
         };
         bBack1.addActionListener(back);
         bBack2.addActionListener(back);
+
+        bEditSltBck.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cd1.show(cardAdmn,"AdminPan");
+            }
+        });
+
+        bEditSltb.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cd1.show(cardAdmn,"Edit");
+            }
+        });
+
+        bHllbck.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cd1.show(cardAdmn,"AdminPan");
+            }
+        });
+
+        bHallChnge.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cd1.show(cardAdmn,"HallChange");
+            }
+        });
     }
 
 }
