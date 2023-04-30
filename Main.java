@@ -6,7 +6,6 @@ public class Main{
     public static Movies mv,mv1,mv2;
     public static void main(String[] args){
 
-
         admin = new AdminGUI();
         user = new UserGUI();
         mainW = new Window();
