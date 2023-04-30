@@ -1,4 +1,3 @@
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -63,8 +62,10 @@ public class Window{
         bAdmn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 fMnWnd.setVisible(false);
                 fAdmnLog.setVisible(true);
+
 
             }
         });
@@ -151,8 +152,7 @@ public class Window{
         bLgn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                if(tfNme.getText().equals("Udara")&&tfPsw.getText().equals("12345")) {
+                if(tfNme.getText().equals(new Admin().getUsername())&&tfPsw.getText().equals(new Admin().getPassword())) {
                     tfNme.setText("");
                     tfPsw.setText("");
                     fAdmnLog.dispose();
