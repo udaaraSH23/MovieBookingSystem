@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -9,13 +10,12 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class Window{
 
-    JFrame fMnWnd, fAdmn;
+    JFrame fMnWnd, fAdmnLog;
     JPanel pMnWnd, pAdmn;
     JLabel lMnWndw,lAdUNm,lAdPs, bckGrdMn,bckGrdAd,lExt,lLgn;
     JButton bAdmn, bUsr, bLgn,bBackLgn;
     JTextField tfNme,tfPsw;
 
-    public static UserGUI user;
     Window(){
 //        Main Window  WELCOME------------------------------------------------------------------------------------------
         fMnWnd = new JFrame("Movie Booking System-SKU Movies");
@@ -63,8 +63,8 @@ public class Window{
         bAdmn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                fMnWnd.dispose();
-                fAdmn.setVisible(true);
+                fMnWnd.setVisible(false);
+                fAdmnLog.setVisible(true);
 
             }
         });
@@ -77,30 +77,30 @@ public class Window{
         bUsr.setForeground(Color.WHITE);
         bUsr.setFocusable(false);
         pMnWnd.add(bUsr);
-        user =new UserGUI();
+
         bUsr.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                fMnWnd.dispose();
-                user.fUsr.setVisible(true);
+                fMnWnd.setVisible(false);
+                Main.user.fUsr.setVisible(true);
 
             }
         });
         fMnWnd.setVisible(true);
 //        Window for Admin Login=========================================================================================
-        fAdmn = new JFrame("Admin Login");
-        fAdmn.setSize(800,800);
-        fAdmn.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        fAdmn.setLayout(null);
-        fAdmn.setLocationRelativeTo(null);
-        fAdmn.setResizable(false);
+        fAdmnLog = new JFrame("Admin Login");
+        fAdmnLog.setSize(800,800);
+        fAdmnLog.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        fAdmnLog.setLayout(null);
+        fAdmnLog.setLocationRelativeTo(null);
+        fAdmnLog.setResizable(false);
 
         pAdmn = new JPanel();
         pAdmn.setBounds(100,50,600,600);
         pAdmn.setBackground(new Color(0x385095D2, true));
         pAdmn.setLayout(null);
         pAdmn.setBorder(bdrPM);
-        fAdmn.add(pAdmn);
+        fAdmnLog.add(pAdmn);
 
         lAdUNm = new JLabel("Username");
         lAdUNm.setBounds(150,130,100,50);
@@ -110,7 +110,7 @@ public class Window{
         bckGrdAd = new JLabel();
         bckGrdAd.setBounds(0,0,800,800);
         bckGrdAd.setIcon(img);
-        fAdmn.add(bckGrdAd);
+        fAdmnLog.add(bckGrdAd);
 
         pAdmn.add(lAdUNm);
 
@@ -153,16 +153,18 @@ public class Window{
             public void actionPerformed(ActionEvent e) {
 
                 if(tfNme.getText().equals("Udara")&&tfPsw.getText().equals("12345")) {
-                    fAdmn.dispose();
-                    new AdminGUI();
+                    tfNme.setText("");
+                    tfPsw.setText("");
+                    fAdmnLog.dispose();
+                    Main.admin.fAdmn.setVisible(true);
                 }
             }
         });
         bBackLgn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                fAdmn.dispose();
-                new Window();
+                fAdmnLog.dispose();
+                Main.mainW.fMnWnd.setVisible(true);
             }
         });
 
